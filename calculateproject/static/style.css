@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    background-color: #757575;
+    color: #fff;
+    text-align: center;
+    height: 60px;
+    margin: 0 auto;
+    padding: 5px;
+}
+h2{
+    text-align: center;
+    padding: 15px;
+}
+section{
+    background-color: #C5E99B;
+    padding-bottom: 20px;
+}
+ul li{
+    margin: 0.5em 20%;
+}
+form{
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
+    background-color: #8CD790;
+}
+.form-item{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.form-item dt{
+    font-size: 1.2em;
+    color: white;
+    width: 40%;
+}
+.form-item dt::before{
+    content: "◆";
+    color: wheat;
+    padding-right: 6px;
+}
+.form-item dd{
+    margin-bottom: 20px;
+    color: white;
+    
+}
+input[type="text"]{
+    display: inline-block;
+    width: 40%;
+    margin-right: 8px;
+}
+.form-submit{
+    text-align: center;
+    font-size: 1.3em;
+}
+input[type="submit"]{
+    background: teal;
+    padding: 0.5em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 20%;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+}
+.flex-item{
+    background: #09b;
+    color: #fff;
+    flex-basis: 30%;
+    padding: 1em;
+}
+.flex-item dt{
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+}
+.flex-item dd{
+    text-align: center;
+}
+.summary{
+    padding: 10px;
+    margin-left: 25%;
+    color: white;
+}
+em{
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: normal;
+}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock header %}
+
+{% block content %}
+{% for error in form.non_field_errors %}
+{{ error }}
+{% endfor %}
+
+<h1>割り勘計算ソフト</h1>
+<section>
+    <div class="rule">
+        <h2>ルール説明</h2>
+        <ul>
+            <li>このサイトでは、合計金額を最大３グループに分けての割り勘計算が可能です。</li>
+            <li>以下の空欄すべてに整数値を入力してから、計算するを選択してください。</li>
+            <li>Bグループ、Cグループが存在しない場合は、人数を0人としてください。<br>
+            また、その際は金額差の欄には適当な数値を入力してください。</li>
+            <li>Aグループの金額が最大になるように代入してください。</li>
+            <li>合計金額は100円以上を入力してください</li>
+            <li>計算結果は、小数第一位を切り上げしたものです。</li>
+        </ul>
+    </div>
+    </div>
+</section>
+<section>
+<form method="POST">{% csrf_token %}
+    <div class="form-item">
+        <dt>合計金額</dt>
+        <dd><input type='text' name="sum" placeholder='3000' required>円</dd>
+    </div>
+    <div class="form-item">
+        <dt>Aグループ</dt>
+        <dd><input type='text' name="anum" placeholder='5' required>人</dd>
+    </div>
+    <div class="form-item">
+        <dt>Bグループ</dt>
+        <dd><input type='text' name="bnum" placeholder='3' required>人</dd>
+    </div>
+    <div class="form-item">
+        <dt>Cグループ</dt>
+        <dd><input type='text' name="cnum" placeholder='0' required>人</dd>
+    </div>
+    <div class="form-item">
+        <dt>Aの金額-Bの金額</dt>
+        <dd><input type='text' name="diffab"  placeholder='200' required>円</dd>
+    </div>
+    <div class="form-item">
+        <dt>Aの金額-Cの金額</dt>
+        <dd><input type='text' name="diffac" placeholder=0 required>円</dd>
+    </div>
+    <div class="form-submit">
+    <input type="submit" value="計算する">
+    </div>
+</form>
+</section>
+<section>
+    <div class="result">
+        <h2>計算結果</h2>
+        <dl class="flex-container">
+            <div class="flex-item">
+                <dt>Aグループ</dt>
+                <dd>1人あたり<em>{{inta}}円</em> × {{anum}}人<br>={{asum}}円</dd>
+            </div>
+            <div class="flex-item">
+                <dt>Bグループ</dt>
+                <dd>1人あたり<em>{{intb}}円</em> × {{bnum}}人<br>={{bsum}}円</dd>
+            </div>
+            <div class="flex-item">
+                <dt>Cグループ</dt>
+                <dd>1人あたり<em>{{intc}}円</em> × {{cnum}}人<br>={{csum}}円</dd>
+            </div>
+        </dl>
+        <div class="summary">
+            <h3>設定金額：{{sum}}円</h3>
+            <h3>合計金額：{{new_sum}}円（+{{remain}}円）</h3>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
